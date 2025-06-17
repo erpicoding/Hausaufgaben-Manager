@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HA Manager</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <header class="wheatLineBottom">
+    <button class="speichern" onclick="saveAll()">ALLES SPEICHERN</button>
+    <button class="löschen" onclick="removeAll()">ALLES LÖSCHEN</button>
+    <button class="löschen" onclick="reset()">ZURÜCKSETZEN</button>
+  </header>
+  <body>
+    <div class="main">
+      <details>
+        <summary>Stunden einstellen</summary>
+
+        <p>
+          Bitte gib die Stundenanzahl für jeden Tag ein. Es sind nur Zahlen von
+          1 - 9 erlaubt!
+        </p>
+        <br />
+        <div class="setup">
+          <input
+            class="stundenInput"
+            type="number"
+            id="stundenMo"
+            placeholder="Montag"
+          />
+          <input
+            class="stundenInput"
+            type="number"
+            id="stundenDi"
+            placeholder="Dienstag"
+          />
+          <input
+            class="stundenInput"
+            type="number"
+            id="stundenMi"
+            placeholder="Mittwoch"
+          />
+          <input
+            class="stundenInput"
+            type="number"
+            id="stundenDo"
+            placeholder="Donnerstag"
+          />
+          <input
+            class="stundenInput"
+            type="number"
+            id="stundenFr"
+            placeholder="Freitag"
+          />
+          <button class="speichern" onclick="getStunden()">Speichern</button>
+          <div class="color"></div>
+        </div>
+      </details>
+      <br />
+      <div class="woche">
+        <div class="tag montag" id="mo"></div>
+        <div class="tag dienstag" id="di"></div>
+        <div class="tag mittwoch" id="mi"></div>
+        <div class="tag donnerstag" id="do"></div>
+        <div class="tag freitag" id="fr"></div>
+      </div>
+      <script defer src="./script.js"></script>
+    </div>
+  </body>
+  <footer class="wheatLineTop">
+    <p>© 2025 Erik Pischke</p>
+  </footer>
+</html>
