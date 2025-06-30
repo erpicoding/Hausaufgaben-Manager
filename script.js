@@ -71,6 +71,8 @@ function loadDay(day) {
     h1 = "<h1>Freitag</h1>";
   }
 
+  dayID.innerHTML = h1;
+
   let i = 1;
   if (Stunden == 1) {
     let fach = document.createElement("div");
