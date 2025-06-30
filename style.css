@@ -26,7 +26,10 @@ footer {
 
   position: relative;
   bottom: 0;
+
+  gap: 50px;
 }
+
 .main {
   padding: 5px;
   margin: 5px;
@@ -44,6 +47,7 @@ footer {
 .speichern {
   height: 40px;
   margin: 5px;
+  padding: 5px 10px 5px 10px;
   text-align: center;
   color: white;
   background-color: green;
@@ -54,6 +58,7 @@ footer {
 .löschen {
   height: 40px;
   margin: 5px;
+  padding: 5px 10px 5px 10px;
   text-align: center;
   color: white;
   background-color: red;
@@ -61,20 +66,27 @@ footer {
   border: none;
   border-radius: 20px;
 }
+/* X-Butten ist unten nach dem HA input
+*/
+
 /*settings
 */
+details {
+  display: inline;
+}
 details summary:hover {
   color: red;
 }
 summary {
-  display: inline;
   cursor: pointer;
+  width: auto;
+  display: inline;
 }
 .setup {
-  display: flex;
-  flex-wrap: wrap;
-
-  background-color: #1f1f1f;
+  background-color: #111111;
+  padding: 5px;
+  border: 3px wheat solid;
+  width: auto;
 }
 
 .stundenInput {
@@ -104,13 +116,17 @@ h1 {
   padding: 0;
   width: 210px;
 
-  background-color: black !important;
-  box-shadow: inset 0 0 5px white !important;
+  background-color: black;
+  box-shadow: 0 0 5px white !important;
   margin: 5px !important;
   border-radius: 8px !important;
 }
 .fach input {
   box-shadow: 0 0 5px white !important;
+  opacity: 80%;
+}
+.halbesFach {
+  border-radius: 8px;
 }
 
 input {

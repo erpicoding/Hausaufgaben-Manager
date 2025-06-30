@@ -9,20 +9,20 @@
 
   <header class="wheatLineBottom">
     <button class="speichern" onclick="saveAll()">ALLES SPEICHERN</button>
-    <button class="löschen" onclick="removeAll()">ALLES LÖSCHEN</button>
-    <button class="löschen" onclick="reset()">ZURÜCKSETZEN</button>
+    <button class="löschen" onclick="removeAll(true)">ALLES LÖSCHEN</button>
   </header>
   <body>
     <div class="main">
-      <details>
-        <summary>Stunden einstellen</summary>
+      <div class="setup">
+        <details>
+          <summary>Stunden einstellen</summary>
 
-        <p>
-          Bitte gib die Stundenanzahl für jeden Tag ein. Es sind nur Zahlen von
-          1 - 9 erlaubt!
-        </p>
-        <br />
-        <div class="setup">
+          <p>
+            Bitte gib die Stundenanzahl für jeden Tag ein. Es sind nur Zahlen
+            von 1 - 10 erlaubt!
+          </p>
+          <br />
+
           <input
             class="stundenInput"
             type="number"
@@ -53,10 +53,18 @@
             id="stundenFr"
             placeholder="Freitag"
           />
-          <button class="speichern" onclick="getStunden()">Speichern</button>
-          <div class="color"></div>
-        </div>
-      </details>
+          <button class="speichern" onclick="saveStunden()">Speichern</button>
+          <p>Farben</p>
+          <div class="color woche">
+            <br />
+            <div class="tag" id="moColor"></div>
+            <div class="tag" id="diColor"></div>
+            <div class="tag" id="miColor"></div>
+            <div class="tag" id="doColor"></div>
+            <div class="tag" id="frColor"></div>
+          </div>
+        </details>
+      </div>
       <br />
       <div class="woche">
         <div class="tag montag" id="mo"></div>
@@ -69,6 +77,12 @@
     </div>
   </body>
   <footer class="wheatLineTop">
-    <p>© 2025 Erik Pischke</p>
+    <div class="left">
+      <p>© 2025 Erik Pischke</p>
+    </div>
+    <div class="right">
+      <p>Version: beta 0.2</p>
+    </div>
   </footer>
 </html>
+
