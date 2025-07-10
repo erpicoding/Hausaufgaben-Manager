@@ -18,16 +18,19 @@ body {
 }
 footer {
   display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
   background-color: black;
   color: wheat;
   font-size: 15px;
   margin: 0;
-  padding: 20px;
+  padding: 20px 0 20px 0;
+  width: 100%;
+  height: 50px;
 
   position: relative;
   bottom: 0;
-
-  gap: 50px;
 }
 
 .main {
@@ -80,7 +83,6 @@ details summary:hover {
 summary {
   cursor: pointer;
   width: auto;
-  display: inline;
 }
 .setup {
   background-color: #111111;
@@ -97,65 +99,89 @@ summary {
 */
 
 .woche {
-  display: flex;
-  flex-wrap: wrap;
   background-color: #1f1f1f;
+  width: 100%;
 }
-.tag {
-  width: 220px;
+@media (max-width: 400px) {
+  .woche {
+    flex-direction: column;
+  }
+  .tag {
+    width: 100%;
+  }
 }
-h1 {
+@media (max-width: 800px) {
+  .woche {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .tag {
+    max-width: 250px;
+  }
+}
+@media (min-width: 801px) {
+  .woche {
+    display: flex;
+    flex-direction: row;
+  }
+  .tag {
+    width: 20%;
+  }
+}
+h2 {
   color: white;
   text-align: center;
-  font-size: 40px;
+  font-size: 28px;
   margin: 0;
   padding: 0;
 }
 
 .fach {
   padding: 0;
-  width: 210px;
+  width: 90%;
 
   background-color: black;
   box-shadow: 0 0 5px white !important;
   margin: 5px !important;
   border-radius: 8px !important;
 }
-.fach input {
-  box-shadow: 0 0 5px white !important;
-  opacity: 80%;
+
+input {
+  height: 20px;
+  width: 80%;
+  margin: 2.5px;
+
+  font-size: 12px;
+
+  opacity: 0.8;
+  border-radius: 4px;
+  border: none;
+}
+.fachInput {
+  width: 10%;
+  min-width: 20px;
+  margin: 2.5px;
 }
 .halbesFach {
   border-radius: 8px;
+  display: flex;
+
+  padding: 2.5px;
 }
 
-input {
-  height: 40px;
-  width: 150px;
-  margin: 5px;
-
-  position: relative;
-  top: 0px;
-  left: 0px;
-
-  opacity: 0.8;
-  border-radius: 10px;
-  border: none;
-}
 .remove {
-  height: 40px;
-  width: 40px;
+  height: 20px;
+  width: 20px;
 
-  position: relative;
-  top: 0px;
-  right: 0px;
+  margin: 2.5px;
 
   border-radius: 50%;
 
   text-align: center;
   color: white;
   background-color: red;
-  font-weight: 900;
+  font-weight: 800;
   border: none;
 
   transition: all 1s;
