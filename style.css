@@ -10,9 +10,21 @@ html {
 
 header {
   display: flex;
+  flex-wrap: nowrap;
   background-color: black;
   padding: 5px;
 }
+@media (max-width: 500px) {
+  header {
+    flex-direction: column;
+  }
+}
+@media (min-width: 501px) {
+  header {
+    flex-direction: row;
+  }
+}
+
 body {
   background-color: #1f1f1f;
 }
@@ -47,52 +59,85 @@ footer {
 
 /*buttons
 */
-.speichern {
-  height: 40px;
+button {
+  height: 30px;
   margin: 5px;
-  padding: 5px 10px 5px 10px;
+  padding: 5px;
+  border-radius: 15px;
+
   text-align: center;
+  font-weight: 900;
+  border: none;
+  text-wrap: none;
+}
+
+.speichern {
   color: white;
   background-color: green;
-  font-weight: 900;
-  border: none;
-  border-radius: 20px;
 }
 .löschen {
-  height: 40px;
-  margin: 5px;
-  padding: 5px 10px 5px 10px;
-  text-align: center;
   color: white;
   background-color: red;
-  font-weight: 900;
-  border: none;
-  border-radius: 20px;
+}
+.showSetup {
+  color: white;
+  background-color: blue;
+}
+.closeSetup {
+  width: 80px;
 }
 /* X-Butten ist unten nach dem HA input
 */
 
-/*settings
+/*setup
 */
-details {
-  display: inline;
-}
-details summary:hover {
-  color: red;
-}
-summary {
-  cursor: pointer;
-  width: auto;
-}
+
 .setup {
-  background-color: #111111;
-  padding: 5px;
-  border: 3px wheat solid;
-  width: auto;
+  background-color: #1f1f1f;
+  color: white;
+  padding: 15px;
+  margin: auto;
+  border-radius: 15px;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+
+  border: none;
+  box-shadow: 0 0 8px wheat;
+}
+@media (max-width: 500px) {
+  .setup {
+    width: 90%;
+  }
+}
+@media (min-width: 501px) {
+  .setup {
+    width: 50%;
+  }
+}
+dialog.setup::backdrop {
+  background: black;
+  opacity: 90%;
 }
 
 .stundenInput {
   width: 85px !important;
+  height: 26px;
+  padding: 2px;
+  border-radius: 20px;
+}
+.farbInput {
+  width: 30px;
+  height: 30px;
+  border-radius: 0;
+  padding: 0;
+}
+.farbInputSpalte {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  width: 60px;
+  margin-left: 30px;
 }
 /*stundenplan
 
@@ -102,12 +147,18 @@ summary {
   background-color: #1f1f1f;
   width: 100%;
 }
-@media (max-width: 400px) {
+.tag {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+@media (max-width: 500px) {
   .woche {
     flex-direction: column;
   }
   .tag {
     width: 100%;
+    max-width: 500px !important;
   }
 }
 @media (max-width: 800px) {
@@ -148,20 +199,21 @@ h2 {
 }
 
 input {
-  height: 20px;
-  width: 80%;
+  height: 26px;
+  width: calc(100% - 80px);
   margin: 2.5px;
+  padding: 2px;
 
-  font-size: 12px;
+  font-size: 14px;
 
   opacity: 0.8;
-  border-radius: 4px;
+  border-radius: 15px;
   border: none;
 }
 .fachInput {
-  width: 10%;
-  min-width: 20px;
+  width: 26px;
   margin: 2.5px;
+  text-align: center;
 }
 .halbesFach {
   border-radius: 8px;
@@ -171,18 +223,19 @@ input {
 }
 
 .remove {
-  height: 20px;
-  width: 20px;
+  height: 30px;
+  width: 30px;
 
   margin: 2.5px;
 
-  border-radius: 50%;
+  border-radius: 15px;
 
   text-align: center;
   color: white;
   background-color: red;
-  font-weight: 800;
+  font-weight: 900;
   border: none;
+  box-shadow: black 0 0 2px;
 
   transition: all 1s;
 }

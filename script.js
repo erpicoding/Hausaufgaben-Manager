@@ -1,6 +1,3 @@
-//srvice-worker ende
-
-//start vom main script
 if (localStorage.getItem("cookieConfirm") == true) {
   console.log("Cookies bestätigt");
 } else if (localStorage.getItem("cookieConfirm") == (false || null)) {
@@ -15,6 +12,18 @@ if (localStorage.getItem("cookieConfirm") == true) {
     localStorage.setItem("cookieConfirm", false);
     console.log("Cookies abgelehnt");
   }
+}
+if (
+  localStorage.getItem("runSetupScript") == (null || true) &&
+  localStorage.getItem("montag") == null
+) {
+  localStorage.setItem("runSetupScript", false);
+  stundenMo.value = 6;
+  stundenDi.value = 6;
+  stundenMi.value = 6;
+  stundenDo.value = 6;
+  stundenFr.value = 6;
+  saveStunden();
 }
 
 //strg S zum speichern
@@ -305,24 +314,27 @@ function buildDay(day) {
   }
 
   console.log("Tag geladen: " + day);
-
+  //farben auswahl bei setup erstellen
   i = 1;
   colorDayID = day + "Color";
   while (i <= Stunden) {
-    let FarbInput = document.createElement("input");
-    FarbInput.setAttribute("type", "color");
-    FarbInput.setAttribute("onchange", "changeColor(this)");
-    FarbInput.classList.add(day + i);
+    let farbInput = document.createElement("input");
+    let listItem = document.createElement("li");
+    farbInput.setAttribute("type", "color");
+    farbInput.setAttribute("onchange", "changeColor(this)");
+    farbInput.classList.add(day + i);
+    farbInput.classList.add("farbInput");
+    listItem.appendChild(farbInput);
     if (day == "mo") {
-      moColor.appendChild(FarbInput);
+      moColor.appendChild(listItem);
     } else if (day == "di") {
-      diColor.appendChild(FarbInput);
+      diColor.appendChild(listItem);
     } else if (day == "mi") {
-      miColor.appendChild(FarbInput);
+      miColor.appendChild(listItem);
     } else if (day == "do") {
-      doColor.appendChild(FarbInput);
+      doColor.appendChild(listItem);
     } else if (day == "fr") {
-      frColor.appendChild(FarbInput);
+      frColor.appendChild(listItem);
     }
     i++;
   }
@@ -498,13 +510,9 @@ function saveAll() {
   }
   //
   function save(feld) {
-    if (feld != null) {
-      if (feld.value.length > 1) {
-        localStorage.setItem(feld.id, feld.value);
-        let fachInput = document.getElementById("fachInput" + feld.id);
-        localStorage.setItem("fachInput" + feld.id, fachInput.value);
-      }
-    }
+    localStorage.setItem(feld.id, feld.value);
+    let fachInput = document.getElementById("fachInput" + feld.id);
+    localStorage.setItem("fachInput" + feld.id, fachInput.value);
   }
 }
 

@@ -10,62 +10,64 @@
   <header class="wheatLineBottom">
     <button class="speichern" onclick="saveAll()">ALLES SPEICHERN</button>
     <button class="löschen" onclick="removeAll(true)">ALLES LÖSCHEN</button>
+    <button class="showSetup" onclick="setup.showModal()">EINSTELLUNGEN</button>
   </header>
   <body>
     <div class="main">
-      <div class="setup">
-        <details>
-          <summary>Stunden einstellen</summary>
+      <dialog id="setup" class="setup">
+        <p>
+          Bitte gib die Stundenanzahl für jeden Tag ein. Es sind nur Zahlen von
+          1 - 10 erlaubt!
+        </p>
+        <input
+          class="stundenInput"
+          type="number"
+          id="stundenMo"
+          placeholder="Montag"
+        />
+        <input
+          class="stundenInput"
+          type="number"
+          id="stundenDi"
+          placeholder="Dienstag"
+        />
+        <input
+          class="stundenInput"
+          type="number"
+          id="stundenMi"
+          placeholder="Mittwoch"
+        />
+        <input
+          class="stundenInput"
+          type="number"
+          id="stundenDo"
+          placeholder="Donnerstag"
+        />
+        <input
+          class="stundenInput"
+          type="number"
+          id="stundenFr"
+          placeholder="Freitag"
+        />
+        <button class="speichern" onclick="saveStunden()">Speichern</button>
+        <p>Farben</p>
+        <div class="woche">
+          <div class="farbInputSpalte"><p>Montag</p></div>
+          <div class="farbInputSpalte"><p>Dienstag</p></div>
+          <div class="farbInputSpalte"><p>Mittwoch</p></div>
+          <div class="farbInputSpalte"><p>Donnerstag</p></div>
+          <div class="farbInputSpalte"><p>Freitag</p></div>
+        </div>
+        <div class="woche">
+          <ol class="farbInputSpalte" id="moColor"></ol>
+          <ol class="farbInputSpalte" id="diColor"></ol>
+          <ol class="farbInputSpalte" id="miColor"></ol>
+          <ol class="farbInputSpalte" id="doColor"></ol>
+          <ol class="farbInputSpalte" id="frColor"></ol>
+        </div>
+        <button class="closeSetup" onclick="setup.close()">Fertig</button>
+      </dialog>
 
-          <p>
-            Bitte gib die Stundenanzahl für jeden Tag ein. Es sind nur Zahlen
-            von 1 - 10 erlaubt!
-          </p>
-          <br />
-
-          <input
-            class="stundenInput"
-            type="number"
-            id="stundenMo"
-            placeholder="Montag"
-          />
-          <input
-            class="stundenInput"
-            type="number"
-            id="stundenDi"
-            placeholder="Dienstag"
-          />
-          <input
-            class="stundenInput"
-            type="number"
-            id="stundenMi"
-            placeholder="Mittwoch"
-          />
-          <input
-            class="stundenInput"
-            type="number"
-            id="stundenDo"
-            placeholder="Donnerstag"
-          />
-          <input
-            class="stundenInput"
-            type="number"
-            id="stundenFr"
-            placeholder="Freitag"
-          />
-          <button class="speichern" onclick="saveStunden()">Speichern</button>
-          <p>Farben</p>
-          <div class="color woche">
-            <br />
-            <div class="tag" id="moColor"></div>
-            <div class="tag" id="diColor"></div>
-            <div class="tag" id="miColor"></div>
-            <div class="tag" id="doColor"></div>
-            <div class="tag" id="frColor"></div>
-          </div>
-        </details>
-      </div>
-      <br />
       <div class="woche">
         <div class="tag montag" id="mo"></div>
         <div class="tag dienstag" id="di"></div>
