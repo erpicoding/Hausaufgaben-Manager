@@ -105,14 +105,14 @@ button {
   border: none;
   box-shadow: 0 0 8px wheat;
 }
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   .setup {
-    width: 90%;
+    width: 330px;
   }
 }
-@media (min-width: 501px) {
+@media (min-width: 601px) {
   .setup {
-    width: 50%;
+    width: 633px;
   }
 }
 dialog.setup::backdrop {
@@ -121,10 +121,11 @@ dialog.setup::backdrop {
 }
 
 .stundenInput {
-  width: 85px !important;
+  width: 40px !important;
   height: 26px;
   padding: 2px;
   border-radius: 20px;
+  text-align: center;
 }
 .farbInput {
   width: 30px;

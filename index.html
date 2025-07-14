@@ -50,20 +50,29 @@
           placeholder="Freitag"
         />
         <button class="speichern" onclick="saveStunden()">Speichern</button>
-        <p>Farben</p>
+
+        <h3>Farben</h3>
         <div class="woche">
-          <div class="farbInputSpalte"><p>Montag</p></div>
-          <div class="farbInputSpalte"><p>Dienstag</p></div>
-          <div class="farbInputSpalte"><p>Mittwoch</p></div>
-          <div class="farbInputSpalte"><p>Donnerstag</p></div>
-          <div class="farbInputSpalte"><p>Freitag</p></div>
-        </div>
-        <div class="woche">
-          <ol class="farbInputSpalte" id="moColor"></ol>
-          <ol class="farbInputSpalte" id="diColor"></ol>
-          <ol class="farbInputSpalte" id="miColor"></ol>
-          <ol class="farbInputSpalte" id="doColor"></ol>
-          <ol class="farbInputSpalte" id="frColor"></ol>
+          <div class="farbInputSpalte">
+            <p>Montag</p>
+            <ol class="farbInputSpalte" id="moColor"></ol>
+          </div>
+          <div class="farbInputSpalte">
+            <p>Dienstag</p>
+            <ol class="farbInputSpalte" id="diColor"></ol>
+          </div>
+          <div class="farbInputSpalte">
+            <p>Mittwoch</p>
+            <ol class="farbInputSpalte" id="miColor"></ol>
+          </div>
+          <div class="farbInputSpalte">
+            <p>Donnerstag</p>
+            <ol class="farbInputSpalte" id="doColor"></ol>
+          </div>
+          <div class="farbInputSpalte">
+            <p>Freitag</p>
+            <ol class="farbInputSpalte" id="frColor"></ol>
+          </div>
         </div>
         <button class="closeSetup" onclick="setup.close()">Fertig</button>
       </dialog>
