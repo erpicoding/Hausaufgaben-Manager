@@ -13,6 +13,7 @@ if (localStorage.getItem("cookieConfirm") == true) {
     console.log("Cookies abgelehnt");
   }
 }
+
 if (
   localStorage.getItem("runSetupScript") == (null || true) &&
   localStorage.getItem("montag") == null
@@ -23,6 +24,12 @@ if (
   stundenMi.value = 6;
   stundenDo.value = 6;
   stundenFr.value = 6;
+  localStorage.setItem("fachInputmo1", "MA");
+  localStorage.setItem("fachInputmo2", "MA");
+  localStorage.setItem("mo1", "Öffne die Einstellungen");
+  localStorage.setItem("mo2", "Buch S.42 Nr.1");
+  localStorage.setItem("colormo1", "#0000ff");
+  localStorage.setItem("colormo2", "#0000ff");
   saveStunden();
 }
 
@@ -51,7 +58,6 @@ function saveStunden() {
   );
   localStorage.setItem("freitag", document.getElementById("stundenFr").value);
 
-  //removeAll();
   location.reload();
 }
 
@@ -340,7 +346,9 @@ function buildDay(day) {
   }
 }
 function changeColor(input) {
-  console.log("Farbe wird geändert: " + input.classList[0]);
+  console.log(
+    "Farbe wird geändert: " + input.classList[0] + " Wert: " + input.value
+  );
   localStorage.setItem("color" + input.classList[0], input.value);
   let feld = document.querySelectorAll("." + input.classList[0]);
   feld.forEach((el) => {
