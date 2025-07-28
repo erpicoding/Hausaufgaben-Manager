@@ -19,18 +19,20 @@ if (
   localStorage.getItem("montag") == null
 ) {
   localStorage.setItem("runSetupScript", false);
-  stundenMo.value = 6;
-  stundenDi.value = 6;
-  stundenMi.value = 6;
-  stundenDo.value = 6;
-  stundenFr.value = 6;
+
+  localStorage.setItem("montag", 6);
+  localStorage.setItem("dienstag", 6);
+  localStorage.setItem("mittwoch", 6);
+  localStorage.setItem("donnerstag", 6);
+  localStorage.setItem("freitag", 6);
+
   localStorage.setItem("fachInputmo1", "MA");
   localStorage.setItem("fachInputmo2", "MA");
   localStorage.setItem("mo1", "Öffne die Einstellungen");
   localStorage.setItem("mo2", "Buch S.42 Nr.1");
   localStorage.setItem("colormo1", "#0000ff");
   localStorage.setItem("colormo2", "#0000ff");
-  saveStunden();
+  location.reload();
 }
 
 //strg S zum speichern
