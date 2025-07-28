@@ -14,11 +14,9 @@ if (localStorage.getItem("cookieConfirm") == true) {
   }
 }
 
-if (
-  localStorage.getItem("runSetupScript") == (null || true) &&
-  localStorage.getItem("montag") == null
-) {
-  localStorage.setItem("runSetupScript", false);
+if (localStorage.getItem("runSetupScript") == (false || null)) {
+  console.log("setup script startet");
+  localStorage.setItem("runSetupScript", true);
 
   localStorage.setItem("montag", 6);
   localStorage.setItem("dienstag", 6);
