@@ -28,8 +28,9 @@ if (localStorage.getItem("runSetupScript") == (false || null)) {
   localStorage.setItem("fachInputmo2", "MA");
   localStorage.setItem("mo1", "Öffne die Einstellungen");
   localStorage.setItem("mo2", "Buch S.42 Nr.1");
-  localStorage.setItem("colormo1", "#0000ff");
-  localStorage.setItem("colormo2", "#0000ff");
+  localStorage.setItem("fachInput1", "MA");
+  localStorage.setItem("colorInput1", "#0000ff");
+  localStorage.setItem("fachInput1", "MA");
   location.reload();
 }
 
@@ -47,19 +48,6 @@ buildDay("mi");
 buildDay("do");
 buildDay("fr");
 loadContent();
-
-function saveStunden() {
-  localStorage.setItem("montag", document.getElementById("stundenMo").value);
-  localStorage.setItem("dienstag", document.getElementById("stundenDi").value);
-  localStorage.setItem("mittwoch", document.getElementById("stundenMi").value);
-  localStorage.setItem(
-    "donnerstag",
-    document.getElementById("stundenDo").value
-  );
-  localStorage.setItem("freitag", document.getElementById("stundenFr").value);
-
-  location.reload();
-}
 
 function buildDay(day) {
   // montag ist die variable, wie viele stunden am tag sind und mo setzt den geladenen tag fest
@@ -318,33 +306,71 @@ function buildDay(day) {
     }
     dayID.appendChild(fach);
   }
+}
 
-  console.log("Tag geladen: " + day);
-  //farben auswahl bei setup erstellen
-  i = 1;
-  colorDayID = day + "Color";
-  while (i <= Stunden) {
-    let farbInput = document.createElement("input");
-    let listItem = document.createElement("li");
-    farbInput.setAttribute("type", "color");
-    farbInput.setAttribute("onchange", "changeColor(this)");
-    farbInput.classList.add(day + i);
-    farbInput.classList.add("farbInput");
-    listItem.appendChild(farbInput);
-    if (day == "mo") {
-      moColor.appendChild(listItem);
-    } else if (day == "di") {
-      diColor.appendChild(listItem);
-    } else if (day == "mi") {
-      miColor.appendChild(listItem);
-    } else if (day == "do") {
-      doColor.appendChild(listItem);
-    } else if (day == "fr") {
-      frColor.appendChild(listItem);
+function loadContent() {
+  //input in den einstellungen mit Stundenzahlen füllen
+
+  document.getElementById("stundenMo").value = localStorage.getItem("montag");
+  document.getElementById("stundenDi").value = localStorage.getItem("dienstag");
+  document.getElementById("stundenMi").value = localStorage.getItem("mittwoch");
+  document.getElementById("stundenDo").value =
+    localStorage.getItem("donnerstag");
+  document.getElementById("stundenFr").value = localStorage.getItem("freitag");
+
+  load("mo", "montag");
+  load("di", "dienstag");
+  load("mi", "mittwoch");
+  load("do", "donnerstag");
+  load("fr", "freitag");
+
+  function load(day, dayStunden) {
+    dayStunden = localStorage.getItem(dayStunden);
+    i = 1;
+    while (i <= dayStunden - 1) {
+      document.getElementById(day + i).value = localStorage.getItem(day + i);
+      fachName = localStorage.getItem("fachInput" + day + i);
+      document.getElementById("fachInput" + day + i).value = fachName;
+      console.log(day + i + " geladen");
+
+      //den Stunden wird die richtige class zugeordnet
+      feld = document.querySelector("." + day + i);
+      if (feld.classList[2] !== null) {
+        feld.classList.remove(feld.classList[2]);
+      }
+
+      if (fachName != null) {
+        fachName = fachName.replace(/ /g, "");
+        if (fachName.length >= 1) {
+          console.log("fachname länger als 0" + fachName);
+          feld.classList.add("fach" + fachName);
+        }
+      }
+
+      i++;
     }
+  }
+  i = 1;
+  while (i <= 15) {
+    elFach = "fachInput" + i;
+    document.getElementById(elFach).value = localStorage.getItem(elFach);
+    elColor = "colorInput" + i;
+    document.getElementById(elColor).value = localStorage.getItem(elColor);
+
+    let colorFeld = document.querySelectorAll(
+      ".fach" + localStorage.getItem(elFach)
+    );
+    let color = localStorage.getItem(elColor);
+    console.log(color);
+    colorFeld.forEach((el) => {
+      el.style.backgroundColor = color;
+    });
     i++;
   }
+
+  console.log("---Alle items geladen---");
 }
+
 function changeColor(input) {
   console.log(
     "Farbe wird geändert: " + input.classList[0] + " Wert: " + input.value
@@ -355,173 +381,60 @@ function changeColor(input) {
     el.style.backgroundColor = input.value;
   });
 }
-
-function loadContent() {
-  //
-
-  document.getElementById("stundenMo").value = localStorage.getItem("montag");
-  document.getElementById("stundenDi").value = localStorage.getItem("dienstag");
-  document.getElementById("stundenMi").value = localStorage.getItem("mittwoch");
-  document.getElementById("stundenDo").value =
-    localStorage.getItem("donnerstag");
-  document.getElementById("stundenFr").value = localStorage.getItem("freitag");
-
-  loadMo();
-  loadDi();
-  loadMi();
-  loadDo();
-  loadFr();
-
-  //
-  function loadMo() {
-    montag = localStorage.getItem("montag");
-    i = 1;
-    while (i <= montag - 1) {
-      document.getElementById("mo" + i).value = localStorage.getItem("mo" + i);
-      document.getElementById("fachInputmo" + i).value = localStorage.getItem(
-        "fachInputmo" + i
-      );
-      console.log("mo" + i + " geladen");
-      let colorFeld = document.querySelectorAll(".mo" + i);
-      let color = localStorage.getItem("colormo" + i);
-      colorFeld.forEach((el) => {
-        el.style.backgroundColor = color;
-      });
-      i++;
-    }
-  }
-  function loadDi() {
-    dienstag = localStorage.getItem("dienstag");
-    i = 1;
-    while (i <= dienstag - 1) {
-      document.getElementById("di" + i).value = localStorage.getItem("di" + i);
-      document.getElementById("fachInputdi" + i).value = localStorage.getItem(
-        "fachInputdi" + i
-      );
-      let colorFeld = document.querySelectorAll(".di" + i);
-      let color = localStorage.getItem("colordi" + i);
-      colorFeld.forEach((el) => {
-        el.style.backgroundColor = color;
-      });
-      i++;
-    }
-  }
-  function loadMi() {
-    mittwoch = localStorage.getItem("mittwoch");
-    i = 1;
-    while (i <= mittwoch - 1) {
-      document.getElementById("mi" + i).value = localStorage.getItem("mi" + i);
-      document.getElementById("fachInputmi" + i).value = localStorage.getItem(
-        "fachInputmi" + i
-      );
-      let colorFeld = document.querySelectorAll(".mi" + i);
-      let color = localStorage.getItem("colormi" + i);
-      colorFeld.forEach((el) => {
-        el.style.backgroundColor = color;
-      });
-      i++;
-    }
-  }
-  function loadDo() {
-    donnerstag = localStorage.getItem("donnerstag");
-    i = 1;
-    while (i <= donnerstag - 1) {
-      document.getElementById("do" + i).value = localStorage.getItem("do" + i);
-      document.getElementById("fachInputdo" + i).value = localStorage.getItem(
-        "fachInputdo" + i
-      );
-      let colorFeld = document.querySelectorAll(".do" + i);
-      let color = localStorage.getItem("colordo" + i);
-      colorFeld.forEach((el) => {
-        el.style.backgroundColor = color;
-      });
-      i++;
-    }
-  }
-  function loadFr() {
-    freitag = localStorage.getItem("freitag");
-    i = 1;
-    while (i <= freitag) {
-      document.getElementById("fr" + i).value = localStorage.getItem("fr" + i);
-      document.getElementById("fachInputfr" + i).value = localStorage.getItem(
-        "fachInputfr" + i
-      );
-      let colorFeld = document.querySelectorAll(".fr" + i);
-      let color = localStorage.getItem("colorfr" + i);
-      colorFeld.forEach((el) => {
-        el.style.backgroundColor = color;
-      });
-      i++;
-    }
-  }
-
-  console.log("---Alle items geladen---");
-}
 function saveAll() {
   console.log("Speichern wird gestartet");
-  saveMo();
-  saveDi();
-  saveMi();
-  saveDo();
-  saveFr();
+  save("mo", "montag");
+  save("di", "dienstag");
+  save("mi", "mittwoch");
+  save("do", "donnerstag");
+  save("fr", "freitag");
+  location.reload();
+}
+function save(day, dayStunden) {
+  dayStunden = localStorage.getItem(dayStunden);
+  i = 1;
+  while (i <= dayStunden) {
+    let feld = document.getElementById(day + i);
 
-  function saveMo() {
-    montag = localStorage.getItem("montag");
-    i = 1;
-    while (i <= montag) {
-      console.log("Speichern von mo" + i);
-      let feld = document.getElementById("mo" + i);
-      console.log("feld id: " + feld.id);
-      save(document.getElementById(feld.id));
-      i++;
-    }
-  }
-  function saveDi() {
-    dienstag = localStorage.getItem("dienstag");
-    i = 1;
-    while (i <= dienstag) {
-      console.log("Speichern von di" + i);
-      let feld = document.getElementById("di" + i);
-      save(document.getElementById(feld.id));
-      i++;
-    }
-  }
-  function saveMi() {
-    mittwoch = localStorage.getItem("mittwoch");
-    i = 1;
-    while (i <= mittwoch) {
-      console.log("Speichern von mi" + i);
-      let feld = document.getElementById("mi" + i);
-      save(document.getElementById(feld.id));
-      i++;
-    }
-  }
-  function saveDo() {
-    donnerstag = localStorage.getItem("donnerstag");
-    i = 1;
-    while (i <= donnerstag) {
-      console.log("Speichern von do" + i);
-      let feld = document.getElementById("do" + i);
-      save(document.getElementById(feld.id));
-      i++;
-    }
-  }
-  function saveFr() {
-    freitag = localStorage.getItem("freitag");
-    i = 1;
-    while (i <= freitag) {
-      console.log("Speichern von fr" + i);
-      let feld = document.getElementById("fr" + i);
-      save(document.getElementById(feld.id));
-      i++;
-    }
-  }
-  //
-  function save(feld) {
     localStorage.setItem(feld.id, feld.value);
     let fachInput = document.getElementById("fachInput" + feld.id);
     localStorage.setItem("fachInput" + feld.id, fachInput.value);
+    i++;
   }
+}
+
+function saveSettings() {
+  //stundenanzahl pro tag speichern
+  localStorage.setItem("montag", document.getElementById("stundenMo").value);
+  localStorage.setItem("dienstag", document.getElementById("stundenDi").value);
+  localStorage.setItem("mittwoch", document.getElementById("stundenMi").value);
+  localStorage.setItem(
+    "donnerstag",
+    document.getElementById("stundenDo").value
+  );
+  localStorage.setItem("freitag", document.getElementById("stundenFr").value);
+
+  //farben speichern
+  i = 1;
+  while (i <= 15) {
+    //fach Input:
+    fach = document.getElementById("fachInput" + i).value;
+    localStorage.setItem("fachInput" + i, fach);
+    //color Input:
+    color = document.getElementById("colorInput" + i).value;
+    localStorage.setItem("colorInput" + i, color);
+
+    console.log("save setting: " + color);
+    i++;
+  }
+  while (i <= 15) {
+    let el = "colorInput" + i;
+    localStorage.setItem(el, document.getElementById(el).value);
+    i++;
+  }
+
+  saveAll();
+  location.reload();
 }
 
 function removeAll(askForConfirm) {

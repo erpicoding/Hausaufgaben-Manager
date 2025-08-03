@@ -83,13 +83,10 @@ button {
   color: white;
   background-color: blue;
 }
-.showTutorial {
-  color: white;
-  background-color: blue;
-  width: 30px;
-}
 .closeSetup {
   width: 80px;
+  color: white;
+  background-color: green;
 }
 /* X-Butten ist unten nach dem HA input
 */
@@ -117,12 +114,12 @@ button {
 }
 @media (min-width: 601px) {
   .setup {
-    width: 633px;
+    width: 430px;
   }
 }
 dialog.setup::backdrop {
   background: black;
-  opacity: 90%;
+  opacity: 80%;
 }
 
 .stundenInput {
@@ -132,19 +129,42 @@ dialog.setup::backdrop {
   border-radius: 20px;
   text-align: center;
 }
-.farbInput {
-  width: 30px;
-  height: 30px;
-  border-radius: 0;
-  padding: 0;
-}
-.farbInputSpalte {
+
+.colorRow {
   display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  width: 60px;
-  margin-left: 30px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 360px;
+  margin: auto;
 }
+.colorSelect {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  max-width: 100px;
+  height: 30px;
+  margin: 5px;
+
+  background-color: rgb(0, 0, 0);
+  box-shadow: 0 0 5px white;
+  border-radius: 15px;
+
+  align-content: center;
+}
+
+.colorSelect input {
+  width: calc(100% - 35px);
+  margin: 0;
+  text-align: center;
+}
+.farbInput {
+  width: 30px !important;
+  height: 30px;
+  padding: 0;
+  margin-left: 5px;
+  background-color: black;
+}
+
 /*stundenplan
 
 */
@@ -212,7 +232,7 @@ input {
 
   font-size: 14px;
 
-  opacity: 0.8;
+  opacity: 0.85;
   border-radius: 15px;
   border: none;
 }
