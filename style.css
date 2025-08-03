@@ -14,14 +14,15 @@ header {
   background-color: black;
   padding: 5px;
 }
-@media (max-width: 500px) {
+@media (max-width: 400px) {
   header {
     flex-direction: column;
   }
 }
-@media (min-width: 501px) {
+@media (min-width: 401px) {
   header {
     flex-direction: row;
+    height: 50px;
   }
 }
 

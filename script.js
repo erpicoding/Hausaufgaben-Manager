@@ -381,14 +381,16 @@ function changeColor(input) {
     el.style.backgroundColor = input.value;
   });
 }
-function saveAll() {
+function saveAll(forceReload) {
   console.log("Speichern wird gestartet");
   save("mo", "montag");
   save("di", "dienstag");
   save("mi", "mittwoch");
   save("do", "donnerstag");
   save("fr", "freitag");
-  location.reload();
+  if (forceReload == true) {
+    location.reload();
+  }
 }
 function save(day, dayStunden) {
   dayStunden = localStorage.getItem(dayStunden);
@@ -404,6 +406,7 @@ function save(day, dayStunden) {
 }
 
 function saveSettings() {
+  saveAll(false);
   //stundenanzahl pro tag speichern
   localStorage.setItem("montag", document.getElementById("stundenMo").value);
   localStorage.setItem("dienstag", document.getElementById("stundenDi").value);
@@ -433,7 +436,6 @@ function saveSettings() {
     i++;
   }
 
-  saveAll();
   location.reload();
 }
 
