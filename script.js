@@ -327,7 +327,7 @@ function loadContent() {
   function load(day, dayStunden) {
     dayStunden = localStorage.getItem(dayStunden);
     i = 1;
-    while (i <= dayStunden - 1) {
+    while (i <= dayStunden) {
       document.getElementById(day + i).value = localStorage.getItem(day + i);
       fachName = localStorage.getItem("fachInput" + day + i);
       document.getElementById("fachInput" + day + i).value = fachName;
