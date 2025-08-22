@@ -77,9 +77,10 @@ function buildDay(day) {
 
   dayID.innerHTML = h1;
   let i = 1;
-  if (Stunden == 1) {
+  while (i <= Stunden) {
     let fach = document.createElement("div");
     fach.classList.add("fach");
+    //erste fachhälfte erstellen
     halbesFach = document.createElement("div");
     halbesFach.classList.add("halbesFach", day + i);
     fachInput = document.createElement("input");
@@ -96,58 +97,10 @@ function buildDay(day) {
     halbesFach.appendChild(HAinput);
     halbesFach.appendChild(removebutton);
     fach.appendChild(halbesFach);
-    dayID.appendChild(fach);
-  }
-  if (Stunden >= 2) {
-    let fach = document.createElement("div");
-    fach.classList.add("fach");
-    while (i <= 2) {
-      halbesFach = document.createElement("div");
-      halbesFach.classList.add("halbesFach", day + i);
-      fachInput = document.createElement("input");
-      fachInput.classList.add("fachInput");
-      fachInput.setAttribute("id", "fachInput" + day + i);
-      HAinput = document.createElement("input");
-      HAinput.setAttribute("id", day + i);
-      HAinput.setAttribute("placeholder", "");
-      removebutton = document.createElement("button");
-      removebutton.classList.add("remove");
-      removebutton.setAttribute("onclick", "remove(" + day + i + ")");
-      removebutton.innerHTML = "X";
-      halbesFach.appendChild(fachInput);
-      halbesFach.appendChild(HAinput);
-      halbesFach.appendChild(removebutton);
-      fach.appendChild(halbesFach);
-      i++;
-    }
-    dayID.appendChild(fach);
-  }
-  if (Stunden == 3) {
-    let fach = document.createElement("div");
-    fach.classList.add("fach");
-    halbesFach = document.createElement("div");
-    halbesFach.classList.add("halbesFach", day + i);
-    fachInput = document.createElement("input");
-    fachInput.classList.add("fachInput");
-    fachInput.setAttribute("id", "fachInput" + day + i);
-    HAinput = document.createElement("input");
-    HAinput.setAttribute("id", day + i);
-    HAinput.setAttribute("placeholder", "");
-    removebutton = document.createElement("button");
-    removebutton.classList.add("remove");
-    removebutton.setAttribute("onclick", "remove(" + day + i + ")");
-    removebutton.innerHTML = "X";
-    halbesFach.appendChild(fachInput);
-    halbesFach.appendChild(HAinput);
-    halbesFach.appendChild(removebutton);
-    fach.appendChild(halbesFach);
-    dayID.appendChild(fach);
     i++;
-  }
-  if (Stunden >= 4) {
-    let fach = document.createElement("div");
-    fach.classList.add("fach");
-    while (i <= 4) {
+    console.log("i:" + i);
+    // wenn 2 stunden dann auch das ausführen
+    if (i <= Stunden) {
       halbesFach = document.createElement("div");
       halbesFach.classList.add("halbesFach", day + i);
       fachInput = document.createElement("input");
@@ -164,146 +117,9 @@ function buildDay(day) {
       halbesFach.appendChild(HAinput);
       halbesFach.appendChild(removebutton);
       fach.appendChild(halbesFach);
-      i++;
     }
-    dayID.appendChild(fach);
-  }
-  if (Stunden == 5) {
-    let fach = document.createElement("div");
-    fach.classList.add("fach");
-    halbesFach = document.createElement("div");
-    halbesFach.classList.add("halbesFach", day + i);
-    fachInput = document.createElement("input");
-    fachInput.classList.add("fachInput");
-    fachInput.setAttribute("id", "fachInput" + day + i);
-    HAinput = document.createElement("input");
-    HAinput.setAttribute("id", day + i);
-    HAinput.setAttribute("placeholder", "");
-    removebutton = document.createElement("button");
-    removebutton.classList.add("remove");
-    removebutton.setAttribute("onclick", "remove(" + day + i + ")");
-    removebutton.innerHTML = "X";
-    halbesFach.appendChild(fachInput);
-    halbesFach.appendChild(HAinput);
-    halbesFach.appendChild(removebutton);
-    fach.appendChild(halbesFach);
-    dayID.appendChild(fach);
     i++;
-  }
-  if (Stunden >= 6) {
-    let fach = document.createElement("div");
-    fach.classList.add("fach");
-    while (i <= 6) {
-      halbesFach = document.createElement("div");
-      halbesFach.classList.add("halbesFach", day + i);
-      fachInput = document.createElement("input");
-      fachInput.classList.add("fachInput");
-      fachInput.setAttribute("id", "fachInput" + day + i);
-      HAinput = document.createElement("input");
-      HAinput.setAttribute("id", day + i);
-      HAinput.setAttribute("placeholder", "");
-      removebutton = document.createElement("button");
-      removebutton.classList.add("remove");
-      removebutton.setAttribute("onclick", "remove(" + day + i + ")");
-      removebutton.innerHTML = "X";
-      halbesFach.appendChild(fachInput);
-      halbesFach.appendChild(HAinput);
-      halbesFach.appendChild(removebutton);
-      fach.appendChild(halbesFach);
-      i++;
-    }
-    dayID.appendChild(fach);
-  }
-  if (Stunden == 7) {
-    let fach = document.createElement("div");
-    fach.classList.add("fach");
-    halbesFach = document.createElement("div");
-    halbesFach.classList.add("halbesFach", day + i);
-    fachInput = document.createElement("input");
-    fachInput.classList.add("fachInput");
-    fachInput.setAttribute("id", "fachInput" + day + i);
-    HAinput = document.createElement("input");
-    HAinput.setAttribute("id", day + i);
-    HAinput.setAttribute("placeholder", "");
-    removebutton = document.createElement("button");
-    removebutton.classList.add("remove");
-    removebutton.setAttribute("onclick", "remove(" + day + i + ")");
-    removebutton.innerHTML = "X";
-    halbesFach.appendChild(fachInput);
-    halbesFach.appendChild(HAinput);
-    halbesFach.appendChild(removebutton);
-    fach.appendChild(halbesFach);
-    dayID.appendChild(fach);
-    i++;
-  }
-  if (Stunden >= 8) {
-    let fach = document.createElement("div");
-    fach.classList.add("fach");
-    while (i <= 8) {
-      halbesFach = document.createElement("div");
-      halbesFach.classList.add("halbesFach", day + i);
-      fachInput = document.createElement("input");
-      fachInput.classList.add("fachInput");
-      fachInput.setAttribute("id", "fachInput" + day + i);
-      HAinput = document.createElement("input");
-      HAinput.setAttribute("id", day + i);
-      HAinput.setAttribute("placeholder", "");
-      removebutton = document.createElement("button");
-      removebutton.classList.add("remove");
-      removebutton.setAttribute("onclick", "remove(" + day + i + ")");
-      removebutton.innerHTML = "X";
-      halbesFach.appendChild(fachInput);
-      halbesFach.appendChild(HAinput);
-      halbesFach.appendChild(removebutton);
-      fach.appendChild(halbesFach);
-      i++;
-    }
-    dayID.appendChild(fach);
-  }
-  if (Stunden == 9) {
-    let fach = document.createElement("div");
-    fach.classList.add("fach");
-    halbesFach = document.createElement("div");
-    halbesFach.classList.add("halbesFach", day + i);
-    fachInput = document.createElement("input");
-    fachInput.classList.add("fachInput");
-    fachInput.setAttribute("id", "fachInput" + day + i);
-    HAinput = document.createElement("input");
-    HAinput.setAttribute("id", day + i);
-    HAinput.setAttribute("placeholder", "");
-    removebutton = document.createElement("button");
-    removebutton.classList.add("remove");
-    removebutton.setAttribute("onclick", "remove(" + day + i + ")");
-    removebutton.innerHTML = "X";
-    halbesFach.appendChild(fachInput);
-    halbesFach.appendChild(HAinput);
-    halbesFach.appendChild(removebutton);
-    fach.appendChild(halbesFach);
-    dayID.appendChild(fach);
-    i++;
-  }
-  if (Stunden >= 10) {
-    let fach = document.createElement("div");
-    fach.classList.add("fach");
-    while (i <= 10) {
-      halbesFach = document.createElement("div");
-      halbesFach.classList.add("halbesFach", day + i);
-      fachInput = document.createElement("input");
-      fachInput.classList.add("fachInput");
-      fachInput.setAttribute("id", "fachInput" + day + i);
-      HAinput = document.createElement("input");
-      HAinput.setAttribute("id", day + i);
-      HAinput.setAttribute("placeholder", "");
-      removebutton = document.createElement("button");
-      removebutton.classList.add("remove");
-      removebutton.setAttribute("onclick", "remove(" + day + i + ")");
-      removebutton.innerHTML = "X";
-      halbesFach.appendChild(fachInput);
-      halbesFach.appendChild(HAinput);
-      halbesFach.appendChild(removebutton);
-      fach.appendChild(halbesFach);
-      i++;
-    }
+    console.log("i:" + i);
     dayID.appendChild(fach);
   }
 }
