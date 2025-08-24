@@ -3,11 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HA Manager</title>
+    <title>Hausaufgaben Manager</title>
     <link rel="stylesheet" href="./style.css" />
   </head>
 
   <header class="wheatLineBottom">
+    <dialog class="info">
+      Der Hausaufgaben-Manager ist ein einfaches Programm, um Hausaufgaben lokal
+      zu speichern. Man kann für jeden Tag die Stundenanzahl anpassen und jedem
+      Fach eine eigene Farbe geben.
+    </dialog>
     <button class="speichern" onclick="saveAll(true)">ALLES SPEICHERN</button>
     <button class="löschen" onclick="removeAll(true)">ALLES LÖSCHEN</button>
     <button class="showSetup" onclick="setup.showModal()">EINSTELLUNGEN</button>
@@ -129,7 +134,7 @@
   </body>
   <footer class="wheatLineTop">
     <p>© 2025 Erik Pischke</p>
-    <p>Version: Beta 0.5.2</p>
+    <p>Version: Beta 0.5.3</p>
     <p>
       <a
         href="https://github.com/erpicoding/Hausaufgaben-Manager"
@@ -137,6 +142,8 @@
       >
         Github Seite
       </a>
+      <br />
+      <a href="https://erpicoding.github.io" target="_blank">Meine Website</a>
     </p>
   </footer>
 </html>

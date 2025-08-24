@@ -38,7 +38,7 @@ if (localStorage.getItem("runSetupScript") == (false || null)) {
 document.addEventListener("keydown", function (event) {
   if (event.ctrlKey && event.key === "s") {
     event.preventDefault();
-    saveAll();
+    saveAll(true);
   }
 });
 
