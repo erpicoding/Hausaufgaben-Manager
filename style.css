@@ -1,8 +1,10 @@
 :root {
-  --bg-main: hsl(0, 0%, 12%);
-  --bg-sub: black;
+  --bg-sub: hsl(0, 0%, 20%);
+  --bg-main: hsl(0, 0%, 5%);
   --text: white;
   --text-2: wheat;
+  --border: hsl(0, 0%, 12%);
+  --border-light: hsl(0, 0%, 20%);
 }
 
 * {
@@ -18,19 +20,12 @@ html {
 header {
   display: flex;
   flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 50px;
+
   background-color: var(--bg-sub);
   padding: 5px;
-}
-@media (max-width: 400px) {
-  header {
-    flex-direction: column;
-  }
-}
-@media (min-width: 401px) {
-  header {
-    flex-direction: row;
-    height: 40px;
-  }
 }
 
 body {
@@ -43,71 +38,88 @@ footer {
   justify-content: space-around;
 
   background-color: var(--bg-sub);
-  color: var(--text-2);
+  color: var(--text);
   font-size: 15px;
   margin: 0;
   padding: 20px 0 20px 0;
   width: 100%;
-  height: 40px;
+  height: 20px;
 
   position: relative;
   bottom: 0;
 }
 @media (min-width: 800px) {
+  header {
+    justify-content: baseline !important;
+  }
   footer {
     position: fixed;
     bottom: 0px;
     left: 0px;
   }
 }
+footer a {
+  color: var(--text);
+}
+
 .main {
   padding: 5px;
   margin: 5px;
 }
 
-.wheatLineTop {
-  border-top: 3px solid var(--text-2);
-}
-.wheatLineBottom {
-  border-bottom: 3px solid var(--text-2);
-}
-
 /*buttons
 */
 button {
-  height: 30px;
+  height: 40px;
   margin: 5px;
-  padding: 5px;
-  border-radius: 15px;
+  padding: 10px 10px;
+  border-radius: 8px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  justify-items: center;
 
   text-align: center;
   font-weight: 900;
   border: none;
   text-wrap: none;
+
+  background-color: var(--bg-sub);
+  color: white;
 }
 button:hover {
   cursor: pointer;
+  transition: 500s;
 }
-
-.speichern {
-  color: white;
-  background-color: green;
+@media (max-width: 400px) {
+  button > span {
+    display: none;
+  }
 }
-.löschen {
-  color: white;
-  background-color: red;
-}
-.showSetup {
-  color: white;
-  background-color: blue;
-}
-.closeSetup {
-  width: 80px;
-  color: white;
-  background-color: green;
+.menuSymbol {
+  height: 30px;
+  width: 30px;
 
   position: relative;
-  top: 0px;
+  bottom: 5px;
+}
+.speichern {
+  box-shadow: 0 0 5px inset green, 0 0 5px green;
+}
+.löschen {
+  box-shadow: 0 0 5px inset red, 0 0 5px red;
+}
+.showSetup {
+  box-shadow: 0 0 5px inset blue, 0 0 5px blue;
+}
+.closeSetup {
+  color: green;
+  background-color: var(--bg-main);
+  box-shadow: 0 0 5px inset green, 0 0 5px green;
+  margin: auto;
+  margin-top: 20px;
+  text-align: center;
 }
 /* X-Butten ist unten nach dem HA input
 */
@@ -125,8 +137,7 @@ dialog {
   align-content: center;
   text-align: center;
 
-  border: none;
-  box-shadow: 0 0 8px var(--text-2);
+  border: 1px solid var(--border-light);
 }
 @media (max-width: 600px) {
   .setup {
@@ -140,14 +151,14 @@ dialog {
 }
 dialog::backdrop {
   background: black;
-  opacity: 80%;
+  opacity: 50%;
 }
 dialog.info {
   width: 330px;
 }
 
 .stundenInput {
-  width: 40px !important;
+  width: 60px !important;
   height: 26px;
   padding: 2px;
   border-radius: 20px;
@@ -169,24 +180,24 @@ dialog.info {
   height: 30px;
   margin: 5px;
 
-  background-color: var(--bg-sub);
-  box-shadow: 0 0 5px var(--text);
-  border-radius: 15px;
+  background-color: var(--bg-main);
 
   align-content: center;
 }
 
 .colorSelect input {
-  width: calc(100% - 35px);
+  width: calc(50% - 5px);
   margin: 0;
   text-align: center;
+  border-radius: 15px 0 0 15px;
 }
 .farbInput {
-  width: 30px !important;
+  width: calc(50% - 5px) !important;
   height: 30px;
   padding: 0;
   margin-left: 5px;
   background-color: var(--bg-sub);
+  border-radius: 0 15px 15px 0 !important;
 }
 
 /*stundenplan
@@ -243,14 +254,21 @@ h2 {
   padding: 0;
   width: 90%;
 
-  background-color: var(--bg-sub);
-  box-shadow: 0 0 5px var(--text) !important;
+  background-color: var(--bg-main);
   margin: 5px !important;
   border-radius: 8px !important;
 }
+.halbesFach {
+  border-radius: 12px;
+  display: flex;
+
+  padding: 2.5px;
+  background-color: var(--bg-sub);
+  border: 1.5px solid var(--bg-sub);
+}
 
 input {
-  height: 26px;
+  height: 24px;
   width: calc(100% - 80px);
   margin: 2.5px;
   padding: 2px;
@@ -259,18 +277,12 @@ input {
 
   opacity: 0.85;
   border-radius: 15px;
-  border: none;
+  border: 1px solid var(--border);
 }
 .fachInput {
-  width: 26px;
+  width: 24px;
   margin: 2.5px;
   text-align: center;
-}
-.halbesFach {
-  border-radius: 8px;
-  display: flex;
-
-  padding: 2.5px;
 }
 
 .remove {
@@ -278,6 +290,7 @@ input {
   width: 30px;
 
   margin: 2.5px;
+  padding: 5px !important;
 
   border-radius: 15px;
 
@@ -288,11 +301,14 @@ input {
   border: none;
   box-shadow: black 0 0 2px;
 
-  transition: all 1s;
+  transition: all 500ms;
 }
 .remove:hover {
   background-color: var(--bg-sub);
   color: red;
-  box-shadow: inset 0 0 15px;
-  transition: all 1s;
+  background-color: rgba(0, 0, 0, 0);
+  box-shadow: rgba(0, 0, 0, 0) 0 0 2px;
+  text-shadow: 0 0 10px black;
+
+  transition: all 500ms;
 }

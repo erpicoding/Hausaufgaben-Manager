@@ -30,12 +30,16 @@ if (localStorage.getItem("runSetupScript") == (false || null)) {
   localStorage.setItem("mo2", "Buch S.42 Nr.1");
   localStorage.setItem("fachInput1", "MA");
   localStorage.setItem("colorInput1", "#0000ff");
+  localStorage.setItem("colorInput2", "hsla(0, 0%, 20%, 1.00)");
+
   localStorage.setItem("fachInput1", "MA");
   location.reload();
 }
 
 //strg S zum speichern
 document.addEventListener("keydown", function (event) {
+  setTimeout(() => saveAll(false), 1);
+
   if (event.ctrlKey && event.key === "s") {
     event.preventDefault();
     saveAll(true);
@@ -167,7 +171,7 @@ function loadContent() {
     }
   }
   i = 1;
-  while (i <= 15) {
+  while (i <= 18) {
     elFach = "fachInput" + i;
     document.getElementById(elFach).value = localStorage.getItem(elFach);
     elColor = "colorInput" + i;
@@ -179,7 +183,7 @@ function loadContent() {
     let color = localStorage.getItem(elColor);
     console.log(color);
     colorFeld.forEach((el) => {
-      el.style.backgroundColor = color;
+      el.style.border = "1.5px solid" + color;
     });
     i++;
   }
@@ -235,7 +239,7 @@ function saveSettings() {
 
   //farben speichern
   i = 1;
-  while (i <= 15) {
+  while (i <= 18) {
     //fach Input:
     fach = document.getElementById("fachInput" + i).value;
     localStorage.setItem("fachInput" + i, fach);
@@ -246,7 +250,7 @@ function saveSettings() {
     console.log("save setting: " + color);
     i++;
   }
-  while (i <= 15) {
+  while (i <= 18) {
     let el = "colorInput" + i;
     localStorage.setItem(el, document.getElementById(el).value);
     i++;
