@@ -270,10 +270,10 @@ h2 {
 
 .fach {
   padding: 0;
-  width: 90%;
+  width: calc(100% - 12px);
 
   background-color: var(--bg-main);
-  margin: 5px !important;
+  margin: 6px !important;
   border: none !important;
 }
 .halbesFach {
