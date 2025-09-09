@@ -91,6 +91,7 @@ function buildDay(day) {
     fachInput.classList.add("fachInput");
     fachInput.setAttribute("id", "fachInput" + day + i);
     HAinput = document.createElement("input");
+    HAinput.classList.add("HAinput");
     HAinput.setAttribute("id", day + i);
     HAinput.setAttribute("placeholder", "");
     removebutton = document.createElement("button");
@@ -111,6 +112,7 @@ function buildDay(day) {
       fachInput.classList.add("fachInput");
       fachInput.setAttribute("id", "fachInput" + day + i);
       HAinput = document.createElement("input");
+      HAinput.classList.add("HAinput");
       HAinput.setAttribute("id", day + i);
       HAinput.setAttribute("placeholder", "");
       removebutton = document.createElement("button");
