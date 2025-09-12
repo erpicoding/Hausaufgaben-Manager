@@ -28,7 +28,7 @@ header {
 }
 
 body {
-  min-height: calc(100vh - 80px);
+  min-height: calc(100vh - 60px);
   background-color: var(--bg-main);
 }
 footer {
@@ -227,7 +227,8 @@ dialog.info {
 }
 @media (max-width: 500px) {
   .woche {
-    flex-direction: column;
+    flex-direction: column !important;
+    flex-wrap: nowrap;
   }
   .tag {
     width: 100%;
@@ -327,6 +328,7 @@ input {
   color: white;
   background-color: red;
   font-weight: 900;
+  line-height: 20px;
   border: none;
   box-shadow: black 0 0 2px;
 
