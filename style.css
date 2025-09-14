@@ -122,7 +122,7 @@ button:hover {
   background-color: var(--bg-main);
   box-shadow: 0 0 5px inset green, 0 0 5px green;
   margin: auto;
-  margin-top: 20px;
+  margin-top: 8px;
   text-align: center;
 }
 /* X-Butten ist unten nach dem HA input
@@ -142,6 +142,7 @@ dialog {
   text-align: center;
 
   border: 1px solid var(--border-light);
+  border-top: 1px solid hsl(0, 0%, 60%);
 }
 @media (max-width: 600px) {
   .setup {
@@ -157,8 +158,8 @@ dialog::backdrop {
   background: black;
   opacity: 50%;
 }
-dialog.info {
-  width: 330px;
+dialog#updateInfo {
+  width: 400px;
 }
 
 .stundenInput {
@@ -295,7 +296,7 @@ input {
 
   opacity: 0.85;
   border-radius: 15px;
-  border: 1px solid var(--border);
+  border: none;
 }
 .HAinput {
   height: 24px;
@@ -305,9 +306,8 @@ input {
 
   font-size: 14px;
 
-  opacity: 0.85;
+  background-color: hsla(0, 0%, 100%, 0.95);
   border-radius: 15px;
-  border: 1px solid var(--border);
 }
 .fachInput {
   width: 24px;

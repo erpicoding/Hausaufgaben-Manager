@@ -169,6 +169,20 @@
 
         <button class="closeSetup" onclick="saveSettings()">Fertig</button>
       </dialog>
+      <dialog id="updateInfo">
+        <h2>Neues Update: Beta 0.7</h2>
+        <p style="margin-top: 12px">
+          Wenn du eine Klassenarbeit oder einen Test einträgst, werden die
+          Stunden automatisch Markiert.
+          <br />
+          <br />
+          Manuell Markieren:
+          <br />
+          ! = Grün !! = Gelb !!! = Rot
+        </p>
+        <img src="./img/update.png" width="300px" />
+        <button class="closeSetup" onclick="hideUpdateInfo()">Weiter</button>
+      </dialog>
 
       <div class="woche">
         <div class="tag montag" id="mo"></div>
@@ -182,7 +196,7 @@
   </body>
   <footer>
     <p>© <a href="https://erpicoding.github.io">Erpi Coding</a> 2025</p>
-    <p>Version: Beta 0.6.2</p>
+    <p>Version: Beta 0.7</p>
 
     <a
       href="https://github.com/erpicoding/Hausaufgaben-Manager"

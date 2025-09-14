@@ -1,3 +1,5 @@
+const version = "0.7";
+
 if (localStorage.getItem("cookieConfirm") == true) {
   console.log("Cookies bestätigt");
 } else if (localStorage.getItem("cookieConfirm") == (false || null)) {
@@ -11,6 +13,7 @@ if (localStorage.getItem("cookieConfirm") == true) {
   } else {
     localStorage.setItem("cookieConfirm", false);
     console.log("Cookies abgelehnt");
+    location.reload();
   }
 }
 
@@ -28,12 +31,23 @@ if (localStorage.getItem("runSetupScript") == (false || null)) {
   localStorage.setItem("fachInputmo2", "MA");
   localStorage.setItem("mo1", "Öffne die Einstellungen");
   localStorage.setItem("mo2", "Buch S.42 Nr.1");
-  localStorage.setItem("fachInput1", "MA");
-  localStorage.setItem("colorInput1", "#0000ff");
-  localStorage.setItem("colorInput2", "hsla(0, 0%, 20%, 1.00)");
 
   localStorage.setItem("fachInput1", "MA");
-  location.reload();
+  localStorage.setItem("colorInput1", "#0000ff");
+
+  localStorage.setItem("version", version);
+}
+
+// infofenster, wenn neue version
+let updateInfo = document.getElementById("updateInfo");
+if (localStorage.getItem("version") == null) {
+  localStorage.setItem("version", "?");
+} else if (localStorage.getItem("version") !== version) {
+  updateInfo.showModal();
+}
+function hideUpdateInfo() {
+  updateInfo.close();
+  localStorage.setItem("version", version);
 }
 
 //strg S zum speichern
@@ -129,7 +143,6 @@ function buildDay(day) {
     dayID.appendChild(fach);
   }
 }
-
 function loadContent() {
   //input in den einstellungen mit Stundenzahlen füllen
 
@@ -150,10 +163,48 @@ function loadContent() {
     dayStunden = localStorage.getItem(dayStunden);
     i = 1;
     while (i <= dayStunden) {
-      document.getElementById(day + i).value = localStorage.getItem(day + i);
+      // ha in input packen
+      ha = localStorage.getItem(day + i);
+      document.getElementById(day + i).value = ha;
+      // fach in input packen
       fachName = localStorage.getItem("fachInput" + day + i);
       document.getElementById("fachInput" + day + i).value = fachName;
       console.log(day + i + " geladen");
+
+      // farbmarkierungen
+      if (ha !== null) {
+        if (
+          ha.includes("Test") ||
+          ha.includes("test") ||
+          ha.includes("Prüfung") ||
+          ha.includes("Abgabe") ||
+          ha.includes("Vorstellung") ||
+          ha.includes("Präsentation")
+        ) {
+          document.getElementById(day + i).style.backgroundColor =
+            "hsl(68, 100%, 85%)";
+        }
+        if (
+          ha.includes("Klassenarbeit") ||
+          ha.includes("KA") ||
+          ha.includes("Klausur")
+        ) {
+          document.getElementById(day + i).style.backgroundColor =
+            "hsla(0, 100%, 85%, 1.00)";
+        }
+        if (ha.includes("!")) {
+          document.getElementById(day + i).style.backgroundColor =
+            "hsla(108, 100%, 85%, 1.00)";
+        }
+        if (ha.includes("!!")) {
+          document.getElementById(day + i).style.backgroundColor =
+            "hsl(68, 100%, 85%)";
+        }
+        if (ha.includes("!!!")) {
+          document.getElementById(day + i).style.backgroundColor =
+            "hsla(0, 100%, 85%, 1.00)";
+        }
+      }
 
       //den Stunden wird die richtige class zugeordnet
       feld = document.querySelector("." + day + i);
@@ -170,6 +221,7 @@ function loadContent() {
       }
 
       i++;
+      // while ende
     }
   }
   i = 1;
@@ -193,16 +245,6 @@ function loadContent() {
   console.log("---Alle items geladen---");
 }
 
-function changeColor(input) {
-  console.log(
-    "Farbe wird geändert: " + input.classList[0] + " Wert: " + input.value
-  );
-  localStorage.setItem("color" + input.classList[0], input.value);
-  let feld = document.querySelectorAll("." + input.classList[0]);
-  feld.forEach((el) => {
-    el.style.backgroundColor = input.value;
-  });
-}
 function saveAll(forceReload) {
   console.log("Speichern wird gestartet");
   save("mo", "montag");
@@ -211,7 +253,12 @@ function saveAll(forceReload) {
   save("do", "donnerstag");
   save("fr", "freitag");
   if (forceReload == true) {
-    location.reload();
+    buildDay("mo");
+    buildDay("di");
+    buildDay("mi");
+    buildDay("do");
+    buildDay("fr");
+    loadContent();
   }
 }
 function save(day, dayStunden) {
