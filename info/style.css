@@ -1,0 +1,124 @@
+:root {
+  --bg-sub: hsl(0, 0%, 20%);
+  --bg-main: hsl(0, 0%, 0%);
+  --text: hsl(0, 0%, 95%);
+  --border: hsl(0, 0%, 12%);
+  --border-light: hsl(0, 0%, 20%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+
+  /* border: solid 1px yellowgreen; */
+}
+html {
+  font-family: "Roboto", sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text);
+}
+body {
+  background-color: var(--bg-main);
+
+  padding-bottom: 0px;
+}
+
+a {
+  color: var(--text);
+}
+
+h1 {
+  margin: 20px;
+  text-align: center;
+}
+h2 {
+  margin: 10px;
+  text-align: center;
+}
+.main {
+  padding: 5px;
+  margin: 5px;
+}
+.flex2 {
+  width: 80%;
+  margin: auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: var(--bg-sub);
+  border-radius: 40px;
+
+  border: 1px solid var(--border);
+  border-top: 1px solid var(--border-light);
+}
+.flex2 > img {
+  border-radius: 0 0 40px 40px;
+}
+
+p.erklärung {
+  padding: 20px;
+  font-size: 24px;
+}
+
+.grid {
+  width: 50%;
+  margin: auto;
+
+  display: grid;
+  grid-template-rows: repeat(2, 1fr) 80px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.grid > div {
+  height: 80px;
+  width: 160px;
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  background-color: hsl(0, 0%, 5%);
+  border-radius: 10px;
+}
+.grid p {
+  width: 100%;
+}
+@media (max-width: 800px) {
+  .grid {
+    grid-template-rows: repeat(3, 1fr) 80px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* blauer button link */
+a.start {
+  height: 40px;
+  width: 340px;
+  padding: 5px;
+
+  position: fixed;
+  bottom: 20px;
+  left: calc(50% - 200px);
+  border-radius: 30px;
+
+  display: flex;
+  align-content: center;
+  align-items: center;
+
+  text-align: center;
+  line-height: 30px;
+  font-size: 20px;
+  text-decoration: none;
+  background-color: blue;
+
+  transition: 500ms;
+}
+.start p {
+  width: 100%;
+}
+.start:hover {
+  box-shadow: 0 0 10px blue, 0 0 20px rgba(0, 0, 255, 0.5);
+  transform: scale(1.1);
+  transition: 500ms;
+}
