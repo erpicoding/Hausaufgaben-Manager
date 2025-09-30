@@ -4,3 +4,4 @@
 - keine Anmeldung oder Registrierung
 - Stundenanzahl für jeden Tag einzeln anpassbar
 - bessere Übersicht mit Farbeinstellungen
+<img href="./info/img/main.png">
