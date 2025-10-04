@@ -1,7 +1,13 @@
 # Changelog vom Hausaufgaben-Manager
 
-Dieses Programm befindet sich noch in der Bata-Phase!
-Fehler werden bitte bei Issues melden.
+Dieses Programm befindet sich noch in der Beta-Phase!\
+Fehler bitte unter Issues melden.
+
+## Beta 0.7.1
+**Neue Features:**
+- Website Icon
+- angepasster Maus-Curser
+- Lösch-Menü
 
 ## Beta 0.7
 **Neue Features:**
@@ -45,4 +51,4 @@ Fehler werden bitte bei Issues melden.
 **Features:**
 - Hausaufgaben eintragen 
 - anpassbare Stundenanzahl pro Tag
-- alle Daten werden im Browser gespeichert 
+- alle Daten werden im Browser gespeichert
