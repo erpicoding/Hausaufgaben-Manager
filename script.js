@@ -41,10 +41,11 @@ if (localStorage.getItem("runSetupScript") == (false || null)) {
 // infofenster, wenn neue version
 let updateInfo = document.getElementById("updateInfo");
 if (localStorage.getItem("version") == null) {
-  localStorage.setItem("version", "?");
+  updateInfo.showModal();
 } else if (localStorage.getItem("version") !== version) {
   updateInfo.showModal();
 }
+// wenn button im update-modal grdrückt wird
 function hideUpdateInfo() {
   updateInfo.close();
   localStorage.setItem("version", version);
@@ -308,93 +309,96 @@ function saveSettings() {
   location.reload();
 }
 
-function removeAll(askForConfirm) {
-  if (askForConfirm == true) {
-    if (confirm("Alle Daten werden gelöscht!") == true) {
-      montag = localStorage.getItem("montag");
-      i = 1;
-      while (i <= montag) {
-        feld = document.getElementById("mo" + i);
-        remove(feld);
-        i++;
-      }
-      dienstag = localStorage.getItem("dienstag");
-      i = 1;
-      while (i <= dienstag) {
-        feld = document.getElementById("di" + i);
-        remove(feld);
-        i++;
-      }
-      mittwoch = localStorage.getItem("mittwoch");
-      i = 1;
-      while (i <= mittwoch) {
-        feld = document.getElementById("mi" + i);
-        remove(feld);
-        i++;
-      }
-      donnerstag = localStorage.getItem("donnerstag");
-      i = 1;
-      while (i <= donnerstag) {
-        feld = document.getElementById("do" + i);
-        remove(feld);
-        i++;
-      }
-      freitag = localStorage.getItem("freitag");
-      i = 1;
-      while (i <= freitag) {
-        feld = document.getElementById("fr" + i);
-        remove(feld);
-        i++;
-      }
-      function remove(feld) {
-        localStorage.setItem(feld.id, "");
-        feld.placeholder = feld.value;
-        feld.value = "";
-      }
-    }
-  } else {
-    montag = localStorage.getItem("montag");
-    i = 1;
-    while (i <= montag) {
-      feld = document.getElementById("mo" + i);
-      fullRemove(feld);
-      i++;
-    }
-    dienstag = localStorage.getItem("dienstag");
-    i = 1;
-    while (i <= dienstag) {
-      feld = document.getElementById("di" + i);
-      fullRemove(feld);
-      i++;
-    }
-    mittwoch = localStorage.getItem("mittwoch");
-    i = 1;
-    while (i <= mittwoch) {
-      feld = document.getElementById("mi" + i);
-      fullRemove(feld);
-      i++;
-    }
-    donnerstag = localStorage.getItem("donnerstag");
-    i = 1;
-    while (i <= donnerstag) {
-      feld = document.getElementById("do" + i);
-      fullRemove(feld);
-      i++;
-    }
-    freitag = localStorage.getItem("freitag");
-    i = 1;
-    while (i <= freitag) {
-      feld = document.getElementById("fr" + i);
-      fullRemove(feld);
-      i++;
-    }
-    function remove(feld) {
-      localStorage.setItem(feld.id, "");
-      feld.value = "";
-      feld.placeholder = "";
-    }
+function removeHA() {
+  montag = localStorage.getItem("montag");
+  let i = 1;
+  while (i <= montag) {
+    feld = document.getElementById("mo" + i);
+    fullRemove(feld);
+    i++;
+  }
+  dienstag = localStorage.getItem("dienstag");
+  i = 1;
+  while (i <= dienstag) {
+    feld = document.getElementById("di" + i);
+    fullRemove(feld);
+    i++;
+  }
+  mittwoch = localStorage.getItem("mittwoch");
+  i = 1;
+  while (i <= mittwoch) {
+    feld = document.getElementById("mi" + i);
+    fullRemove(feld);
+    i++;
+  }
+  donnerstag = localStorage.getItem("donnerstag");
+  i = 1;
+  while (i <= donnerstag) {
+    feld = document.getElementById("do" + i);
+    fullRemove(feld);
+    i++;
+  }
+  freitag = localStorage.getItem("freitag");
+  i = 1;
+  while (i <= freitag) {
+    feld = document.getElementById("fr" + i);
+    fullRemove(feld);
+    i++;
+  }
+  function remove(feld) {
+    localStorage.setItem(feld.id, "");
+    feld.value = "";
+    feld.placeholder = "";
+  }
+  location.reload();
+}
+function removeFach() {
+  montag = localStorage.getItem("montag");
+  let i = 1;
+  while (i <= montag) {
+    feld = document.getElementById("fachInputmo" + i);
+    fullRemove(feld);
+    i++;
+  }
+  dienstag = localStorage.getItem("dienstag");
+  i = 1;
+  while (i <= dienstag) {
+    feld = document.getElementById("fachInputdi" + i);
+    fullRemove(feld);
+    i++;
+  }
+  mittwoch = localStorage.getItem("mittwoch");
+  i = 1;
+  while (i <= mittwoch) {
+    feld = document.getElementById("fachInputmi" + i);
+    fullRemove(feld);
+    i++;
+  }
+  donnerstag = localStorage.getItem("donnerstag");
+  i = 1;
+  while (i <= donnerstag) {
+    feld = document.getElementById("fachInputdo" + i);
+    fullRemove(feld);
+    i++;
+  }
+  freitag = localStorage.getItem("freitag");
+  i = 1;
+  while (i <= freitag) {
+    feld = document.getElementById("fachInputfr" + i);
+    fullRemove(feld);
+    i++;
+  }
+  function remove(feld) {
+    localStorage.setItem(feld.id, "");
+    feld.value = "";
+    feld.placeholder = "";
   }
 }
+function reset() {
+  localStorage.clear();
+  localStorage.setItem("cookieConfirm", true);
+}
+
 function remove(feld) {
   localStorage.setItem(feld.id, "");
   feld.placeholder = feld.value;

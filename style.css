@@ -15,6 +15,10 @@ html {
   background-color: var(--bg-sub);
   color: var(--text);
 }
+input:hover,
+button:hover {
+  cursor: url(./img/cursor.png), auto !important;
+}
 
 header {
   display: flex;
@@ -119,10 +123,10 @@ button:hover {
 }
 .closeSetup {
   color: green;
-  background-color: var(--bg-main);
+  background-color: hsl(0, 0%, 15%);
   box-shadow: 0 0 5px inset green, 0 0 5px green;
   margin: auto;
-  margin-top: 8px;
+  margin-top: 20px;
   text-align: center;
 }
 /* X-Butten ist unten nach dem HA input
@@ -132,7 +136,7 @@ button:hover {
 */
 
 dialog {
-  background-color: var(--bg-main);
+  background: linear-gradient(0deg, hsl(0, 0%, 10%), hsl(0, 0%, 15%));
   color: var(--text);
   padding: 15px;
   margin: auto;
@@ -141,8 +145,8 @@ dialog {
   align-content: center;
   text-align: center;
 
-  border: 1px solid var(--border-light);
-  border-top: 1px solid hsl(0, 0%, 60%);
+  border: none;
+  box-shadow: inset 0 1px 2px hsl(0, 0%, 30%);
 }
 @media (max-width: 600px) {
   .setup {
@@ -160,6 +164,12 @@ dialog::backdrop {
 }
 dialog#updateInfo {
   width: 400px;
+}
+dialog#löschen {
+  gap: 8px;
+}
+dialog#löschen button {
+  width: calc(100% - 10px);
 }
 
 .stundenInput {
@@ -184,8 +194,6 @@ dialog#updateInfo {
   max-width: 100px;
   height: 30px;
   margin: 5px;
-
-  background-color: var(--bg-main);
 
   align-content: center;
 }

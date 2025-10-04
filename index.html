@@ -9,6 +9,7 @@
     />
     <title>Hausaufgaben Manager</title>
     <link rel="stylesheet" href="./style.css" />
+    <link rel="shortcut icon" href="./img/icon.png" type="image/x-icon" />
   </head>
 
   <header>
@@ -25,7 +26,7 @@
       </svg>
       <span>SPEICHERN</span>
     </button>
-    <button class="löschen" onclick="removeAll(true)">
+    <button class="löschen" onclick="löschen.showModal()">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 640 640"
@@ -168,6 +169,12 @@
         </div>
 
         <button class="closeSetup" onclick="saveSettings()">Fertig</button>
+      </dialog>
+      <dialog id="löschen">
+        <button onclick="removeHA()">Hausaufgaben löschen</button>
+        <button onclick="removeFach()">Stundenplan löschen</button>
+        <button onclick="reset()" class="löschen">Alles Zurücksetzen</button>
+        <button onclick="löschen.close()" class="closeSetup">Abbrechen</button>
       </dialog>
       <dialog id="updateInfo">
         <h2>Neues Update: Beta 0.7</h2>
