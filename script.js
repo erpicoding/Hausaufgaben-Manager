@@ -39,7 +39,6 @@ if (localStorage.getItem("runSetupScript") == (false || null)) {
 }
 
 // infofenster, wenn neue version
-let updateInfo = document.getElementById("updateInfo");
 if (localStorage.getItem("version") == null) {
   updateInfo.showModal();
 } else if (localStorage.getItem("version") !== version) {
@@ -67,6 +66,15 @@ buildDay("mi");
 buildDay("do");
 buildDay("fr");
 loadContent();
+
+function defaultReload() {
+  buildDay("mo");
+  buildDay("di");
+  buildDay("mi");
+  buildDay("do");
+  buildDay("fr");
+  loadContent();
+}
 
 function buildDay(day) {
   // montag ist die variable, wie viele stunden am tag sind und mo setzt den geladenen tag fest
@@ -253,6 +261,7 @@ function saveAll(forceReload) {
   save("mi", "mittwoch");
   save("do", "donnerstag");
   save("fr", "freitag");
+
   if (forceReload == true) {
     buildDay("mo");
     buildDay("di");
@@ -306,7 +315,8 @@ function saveSettings() {
     i++;
   }
 
-  location.reload();
+  setup.close();
+  defaultReload();
 }
 
 function removeHA() {
@@ -314,35 +324,35 @@ function removeHA() {
   let i = 1;
   while (i <= montag) {
     feld = document.getElementById("mo" + i);
-    fullRemove(feld);
+    remove(feld);
     i++;
   }
   dienstag = localStorage.getItem("dienstag");
   i = 1;
   while (i <= dienstag) {
     feld = document.getElementById("di" + i);
-    fullRemove(feld);
+    remove(feld);
     i++;
   }
   mittwoch = localStorage.getItem("mittwoch");
   i = 1;
   while (i <= mittwoch) {
     feld = document.getElementById("mi" + i);
-    fullRemove(feld);
+    remove(feld);
     i++;
   }
   donnerstag = localStorage.getItem("donnerstag");
   i = 1;
   while (i <= donnerstag) {
     feld = document.getElementById("do" + i);
-    fullRemove(feld);
+    remove(feld);
     i++;
   }
   freitag = localStorage.getItem("freitag");
   i = 1;
   while (i <= freitag) {
     feld = document.getElementById("fr" + i);
-    fullRemove(feld);
+    remove(feld);
     i++;
   }
   function remove(feld) {
@@ -350,42 +360,43 @@ function removeHA() {
     feld.value = "";
     feld.placeholder = "";
   }
-  location.reload();
+  löschen.close();
+  defaultReload();
 }
 function removeFach() {
   montag = localStorage.getItem("montag");
   let i = 1;
   while (i <= montag) {
     feld = document.getElementById("fachInputmo" + i);
-    fullRemove(feld);
+    remove(feld);
     i++;
   }
   dienstag = localStorage.getItem("dienstag");
   i = 1;
   while (i <= dienstag) {
     feld = document.getElementById("fachInputdi" + i);
-    fullRemove(feld);
+    remove(feld);
     i++;
   }
   mittwoch = localStorage.getItem("mittwoch");
   i = 1;
   while (i <= mittwoch) {
     feld = document.getElementById("fachInputmi" + i);
-    fullRemove(feld);
+    remove(feld);
     i++;
   }
   donnerstag = localStorage.getItem("donnerstag");
   i = 1;
   while (i <= donnerstag) {
     feld = document.getElementById("fachInputdo" + i);
-    fullRemove(feld);
+    remove(feld);
     i++;
   }
   freitag = localStorage.getItem("freitag");
   i = 1;
   while (i <= freitag) {
     feld = document.getElementById("fachInputfr" + i);
-    fullRemove(feld);
+    remove(feld);
     i++;
   }
   function remove(feld) {
@@ -393,10 +404,14 @@ function removeFach() {
     feld.value = "";
     feld.placeholder = "";
   }
+  löschen.close();
+  defaultReload();
 }
 function reset() {
   localStorage.clear();
   localStorage.setItem("cookieConfirm", true);
+  //neuladen erforderlich
+  location.reload();
 }
 
 function remove(feld) {
